@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+:root {
+    /*--body-bg-color: rgb(124, 184, 245);*/
+    --body-bg-color: radial-gradient(rgb(23, 29, 34), rgb(9, 18, 39));
+    --inner-bg-color: black;
+    --main-text-color: white;
+    --main-font: 'Roboto', sans-serif;
+    --color-green: rgb(23, 82, 36);
+}
+
+body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background: var(--body-bg-color);
+    color: var(--main-text-color);
+    font-family: var(--main-font);
+    /* Min height ensures the gradiant we use for bg-color doesn't look horrendous */
+    min-height: 100vh;
+}
+
+a {
+    text-decoration: none;
+    color:var(--main-text-color);
+}
+
+#codepen-output {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    gap: 2.5rem;
+    grid-template-columns: 1fr 1fr;
+}
+
+.grid-item {
+    background:url("../img/img_codepen.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    /* We use a transparent border because on the hover we have a visible border, and we don't want the element to shuffle around */
+    border: 4px solid transparent;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.87)
+}
+    .grid-item:hover {
+        border: 4px solid var(--color-green);
+        box-shadow: 2px 2px 2px rgb(23, 82, 36);
+    }
+
+.grid-item a {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    display: block;
+    /* This is a really filthy trick. h2 elements by default have a margin-block-start that pushes the link away, 
+    so an invisible border will overlap the entire grid-item element again */
+    border: 9px solid transparent;
+}
+
+.grid-item p.codepen-date-posted {
+    font-size: 0.75rem;
+    position: relative;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: calc(100vw - 2rem);
+    background: black;
+    padding: 1rem;
+    text-align: center;
+}
+    footer a:hover {
+        text-decoration: underline;
+    }
+
+header {
+    padding: 1rem;
+    text-align: center;
+}
+
+@media screen and (max-width: 924px) {
+    .grid-item {
+        padding: 0.5rem;
+    }
+
+    #codepen-output {
+    grid-template-columns: 90vw;
+    justify-content: center;
+    }
+}
